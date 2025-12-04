@@ -6,6 +6,18 @@ const { motion, AnimatePresence } = window["framer-motion"];
 
 // Advanced Dice Roller: d10 (magic & non-magic) + d60
 function DiceSimulator() {
+
+  //safety net for motion not working
+  const fm = window["framer-motion"];
+  if (!fm) {
+    // Volendo puoi renderizzare una versione senza animazioni
+    console.error("Framer Motion UMD not loaded. Rendering without animations.");
+  }
+  
+  // uso fm && fm.motion solo dove ti serve
+  const MotionDiv = fm ? fm.motion.div : "div";
+  //end safety net for motion not working
+  
   const [rollMode, setRollMode] = useState("both"); // "both" | "nonMagical"
   const [beneModifier, setBeneModifier] = useState("0");
 
