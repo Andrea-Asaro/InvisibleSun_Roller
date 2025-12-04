@@ -5,17 +5,27 @@
     <title>Invisible Sun Roller</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- React + ReactDOM via CDN -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- TailwindCSS (solo per gli stili) -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Babel per compilare il JSX nel browser -->
+    <!-- React + ReactDOM via CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Framer Motion UMD -->
+    <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+
+    <!-- Babel per compilare JSX nel browser -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
-  <body>
+  <body class="bg-slate-900">
     <div id="root"></div>
 
-    <!-- Il tuo file JSX -->
-    <script type="text/babel" src="./InvisibleSun_Roller.jsx"></script>
+    <!-- Il file JSX (niente import/export, solo React globale) -->
+    <script
+      type="text/babel"
+      data-presets="env,react"
+      src="./InvisibleSun_Roller.jsx"
+    ></script>
   </body>
 </html>
