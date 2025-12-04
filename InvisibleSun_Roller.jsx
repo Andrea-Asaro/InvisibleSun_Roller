@@ -322,7 +322,8 @@ function DiceSimulator() {
     </div>
   );
 }
-
 // Mount React app
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const rootElement = document.getElementById("root");
+const root = ReactDOM.createRoot(rootElement);
 root.render(<DiceSimulator />);
+
