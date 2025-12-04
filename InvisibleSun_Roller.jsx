@@ -87,7 +87,7 @@ function DiceSimulator() {
   /* ----------------------------------------------------------- */
 
   return (
-    <div className="min-h-screen w-full flex items-stretch justify-center bg-gradient-to-r from-slate-950 via-slate-900 to-sky-900 text-slate-50">
+    <div className="min-h-screen w-full flex items-stretch justify-center bg-gradient-to-r from-slate-950 via-slate-900 to-sky-900 text-slate-50" id="root">
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row gap-6 md:gap-10 p-4 md:p-8">
 
         {/* LEFT SECTION: d10 */}
