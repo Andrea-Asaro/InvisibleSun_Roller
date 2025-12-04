@@ -1,26 +1,29 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+// React hooks from global React
+const { useState } = React;
+
+// Framer Motion from global UMD bundle
+const { motion, AnimatePresence } = window["framer-motion"];
 
 // Advanced Dice Roller: d10 (magic & non-magic) + d60
-export default function DiceSimulator() {
+function DiceSimulator() {
   const [rollMode, setRollMode] = useState("both"); // "both" | "nonMagical"
   const [beneModifier, setBeneModifier] = useState("0");
 
-  const [magicD10Result, setMagicD10Result] = useState<number | null>(null);
-  const [nonMagicD10Result, setNonMagicD10Result] = useState<number | null>(null);
-  const [nonMagicD10Total, setNonMagicD10Total] = useState<number | null>(null);
+  const [magicD10Result, setMagicD10Result] = useState(null);
+  const [nonMagicD10Result, setNonMagicD10Result] = useState(null);
+  const [nonMagicD10Total, setNonMagicD10Total] = useState(null);
 
-  const [d60Result, setD60Result] = useState<number | null>(null);
+  const [d60Result, setD60Result] = useState(null);
 
   // State for magic card alert animation when rolling 0
   const [isMagicAlert, setIsMagicAlert] = useState(false);
 
-  // Helper to roll an N-sided die (1..sides)
-  const rollDie = (sides: number) => {
+  // Helper: roll an N-sided die (1..sides)
+  const rollDie = (sides) => {
     return Math.floor(Math.random() * sides) + 1;
   };
 
-  // Helper to roll a d10 (0..9)
+  // Helper: roll a d10 (0..9)
   const rollD10ZeroToNine = () => {
     return Math.floor(Math.random() * 10);
   };
@@ -30,10 +33,10 @@ export default function DiceSimulator() {
     setIsMagicAlert(true);
     setTimeout(() => {
       setIsMagicAlert(false);
-    }, 3000); // 1s to red, 2s hold, 1s back while class is removed
+    }, 3000);
   };
 
-  // Handle roll for d10 area (magic + non-magic)
+  // Handle roll for d10 (magic + non-magic)
   const handleRollD10 = () => {
     const modifier = parseInt(beneModifier, 10);
     const safeModifier = isNaN(modifier) ? 0 : modifier;
@@ -61,7 +64,7 @@ export default function DiceSimulator() {
   };
 
   // Adjust Bene using +/- buttons
-  const adjustBene = (delta: number) => {
+  const adjustBene = (delta) => {
     const current = parseInt(beneModifier || "0", 10);
     const safeCurrent = isNaN(current) ? 0 : current;
     const next = safeCurrent + delta;
@@ -319,3 +322,7 @@ export default function DiceSimulator() {
     </div>
   );
 }
+
+// Mount React app
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<DiceSimulator />);
